@@ -11,7 +11,7 @@
                     "postinstall":  "node scripts/vendor.cjs",
                     "test":  "node --test tests/*.test.cjs",
                     "build":  "electron-builder --win nsis --x64 --publish never",
-                    "release":  "electron-builder --win nsis --x64 --publish always",
+        "release":  "node scripts/publish.cjs",
                     "smoke":  "node scripts/smoke.cjs"
                 },
     "build":  {

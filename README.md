@@ -99,7 +99,7 @@ git push origin main --tags
 
 A Action Windows valida a versão, roda os testes e publica o instalador `.exe`, o `.blockmap` e o `latest.yml`. Preserve esses três arquivos na Release: eles permitem a atualização automática. O workflow usa o `GITHUB_TOKEN` com permissão de escrita em conteúdo.
 
-Para publicação local, configure `GH_TOKEN` no ambiente e execute `npm run release`. Não grave tokens no repositório. O canal de atualização deve ser acessível aos computadores clientes; repositórios privados precisam de uma distribuição pública ou de um provedor autenticado próprio.
+Para publicação local, instale o GitHub CLI (`gh`), configure `GH_TOKEN` no ambiente e execute `npm run release`. Não grave tokens no repositório. O canal de atualização deve ser acessível aos computadores clientes; repositórios privados precisam de uma distribuição pública ou de um provedor autenticado próprio.
 
 O instalador gerado localmente não tem certificado de assinatura de código. Para distribuição assinada, configure as credenciais de assinatura do Electron Builder no ambiente de build.
 

@@ -28,7 +28,7 @@
 | :--- | :--- | :--- |
 | Defina a tarefa, o dia e a hora. Acrescente detalhes e prioridade. | Consulte **Meu dia**, busque suas tarefas ou escolha uma data na **Agenda**. | Receba um lembrete do Windows. Conclua ou adie por 10 minutos. |
 
-**Primeiro acesso:** [baixe o instalador](https://github.com/TrovenDev/greta-todoo/releases/latest), execute `Troven-Tarefas-Setup-1.0.0.exe` e siga o assistente em português. Não precisa instalar Node.js ou outras ferramentas.
+**Primeiro acesso:** [baixe o instalador](https://github.com/TrovenDev/greta-todoo/releases/latest), execute `Troven-Tarefas-Setup-<versão>.exe` e siga o assistente em português. Não precisa instalar Node.js ou outras ferramentas.
 
 ## Feito para a sua rotina
 

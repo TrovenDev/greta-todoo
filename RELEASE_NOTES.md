@@ -1,11 +1,6 @@
-# Sua rotina, no tempo certo.
+# Atualizações com caminho livre.
 
-- Tarefas por dia e hora, com prioridade e detalhes.
-- Treinamentos, rotinas no sistema e reuniões organizados por tipo.
-- Lembretes do Windows e opção de adiar por 10 minutos.
-- Repetição diária ou semanal ao concluir a tarefa.
-- Agenda, busca, histórico de concluídas e backup local.
-- Atualizações automáticas e novidades dentro do aplicativo.
-- Identidade Troven com animações GSAP e Lottie.
+- Instalador, manifesto de atualização e notas publicados juntos em uma única release.
+- Publicação validada automaticamente em Windows antes da distribuição.
 
-Baixe Troven-Tarefas-Setup-1.0.0.exe. A atualização preserva suas tarefas.
+Baixe Troven-Tarefas-Setup-1.0.1.exe. A atualização preserva suas tarefas.

@@ -1,16 +1,30 @@
 [
-  {
-    "version": "1.0.0",
-    "date": "2026-10-23",
-    "title": "Sua rotina, no tempo certo.",
-    "items": [
-      "Tarefas por dia e hora, com prioridade e detalhes.",
-      "Treinamentos, rotinas no sistema e reuniões organizados por tipo.",
-      "Lembretes do Windows e opção de adiar por 10 minutos.",
-      "Repetição diária ou semanal ao concluir a tarefa.",
-      "Agenda, busca, histórico de concluídas e backup local.",
-      "Atualizações automáticas e novidades dentro do aplicativo.",
-      "Identidade Troven com animações GSAP e Lottie."
-    ]
-  }
+    {
+        "version":  "1.0.1",
+        "date":  "2026-10-23",
+        "title":  "Atualizações com caminho livre.",
+        "items":  [
+                      "Instalador, manifesto de atualização e notas publicados juntos em uma única release.",
+                      "Publicação validada automaticamente em Windows antes da distribuição."
+                  ]
+    },
+    {
+        "value":  [
+                      {
+                          "version":  "1.0.0",
+                          "date":  "2026-10-23",
+                          "title":  "Sua rotina, no tempo certo.",
+                          "items":  [
+                                        "Tarefas por dia e hora, com prioridade e detalhes.",
+                                        "Treinamentos, rotinas no sistema e reuniões organizados por tipo.",
+                                        "Lembretes do Windows e opção de adiar por 10 minutos.",
+                                        "Repetição diária ou semanal ao concluir a tarefa.",
+                                        "Agenda, busca, histórico de concluídas e backup local.",
+                                        "Atualizações automáticas e novidades dentro do aplicativo.",
+                                        "Identidade Troven com animações GSAP e Lottie."
+                                    ]
+                      }
+                  ],
+        "Count":  1
+    }
 ]

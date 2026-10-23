@@ -1,0 +1,62 @@
+{
+  "name": "troven-tarefas",
+  "productName": "Troven Tarefas",
+  "version": "1.0.0",
+  "description": "Sua rotina, no tempo certo. Agenda e lembretes da Troven.",
+  "author": "Troven",
+  "private": true,
+  "main": "app/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "node scripts/vendor.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "build": "electron-builder --win nsis --x64 --publish never",
+    "release": "electron-builder --win nsis --x64 --publish always",
+    "smoke": "node scripts/smoke.cjs"
+  },
+  "build": {
+    "appId": "br.com.troven.tarefas",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "app/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "app/assets/troven.ico",
+      "target": "nsis",
+      "artifactName": "Troven-Tarefas-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": [
+        "pt_BR"
+      ],
+      "language": "1046"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "TrovenDev",
+        "repo": "greta-todoo",
+        "releaseType": "release"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9",
+    "gsap": "^3.15.0",
+    "lottie-web": "^5.13.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3"
+  }
+}

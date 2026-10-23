@@ -1,0 +1,14 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const os=require('node:os');
+const path=require('node:path');
+const {Store,validateTask,nextOccurrence}=require('../app/core.cjs');
+const task={title:'Treinamento de cadastro',due:'2026-11-03T12:00:00.000Z',category:'treinamento',priority:'alta',repeat:'none',reminder:15};
+function temporary(t){const dir=fs.mkdtempSync(path.join(os.tmpdir(),'troven-test-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));return dir;}
+test('grava, edita e restaura as tarefas sem perder o identificador',t=>{const dir=temporary(t),store=new Store(dir);store.upsert(task);const id=store.data.tasks[0].id;store.upsert({...task,id,title:'Treinamento atualizado'});const restored=new Store(dir);assert.equal(restored.data.tasks.length,1);assert.equal(restored.data.tasks[0].id,id);assert.equal(restored.data.tasks[0].title,'Treinamento atualizado');});
+test('lembrete respeita antecedência, conclusão e entrega única',t=>{const store=new Store(temporary(t));store.upsert(task);assert.equal(store.dueReminders(Date.parse(task.due)-16*60000).length,0);assert.equal(store.dueReminders(Date.parse(task.due)-15*60000).length,1);store.data.tasks[0].notified=true;assert.equal(store.dueReminders(Date.parse(task.due)).length,0);store.data.tasks[0].notified=false;store.toggle(store.data.tasks[0].id);assert.equal(store.dueReminders(Date.parse(task.due)).length,0);});
+test('recorrência gera um próximo compromisso futuro ao concluir',t=>{const store=new Store(temporary(t));store.upsert({...task,due:'2020-01-01T12:00:00Z',repeat:'weekly'});store.toggle(store.data.tasks[0].id);assert.equal(store.data.tasks.length,2);assert.equal(store.data.tasks[0].done,true);assert.equal(store.data.tasks[1].done,false);assert.ok(new Date(store.data.tasks[1].due)>new Date());store.toggle(store.data.tasks[0].id);store.toggle(store.data.tasks[0].id);assert.equal(store.data.tasks.length,2);});
+test('recorrência semanal atravessa o mês corretamente',()=>assert.equal(nextOccurrence('2026-01-28T12:00:00Z','weekly',new Date('2026-01-29T12:00:00Z')),'2026-02-04T12:00:00.000Z'));
+test('valida entradas e rejeita backup inválido sem substituir a base',t=>{const store=new Store(temporary(t));store.upsert(task);for(const input of [{...task,title:''},{...task,due:'inválido'},{...task,reminder:-1},{...task,repeat:'x'}])assert.throws(()=>validateTask(input));assert.throws(()=>store.parse('{"schema":4,"tasks":[]}'));assert.equal(store.data.tasks.length,1);});
+test('recupera backup e preserva base corrompida',t=>{const dir=temporary(t),store=new Store(dir);store.upsert(task);store.upsert({...task,title:'Outra tarefa'});fs.writeFileSync(store.file,'corrompido');const restored=new Store(dir);assert.equal(restored.data.tasks.length,1);assert.ok(fs.readdirSync(dir).some(f=>f.includes('.corrompido-')));});
